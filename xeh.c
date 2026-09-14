@@ -1,3 +1,6 @@
+// PID: 730769478
+// I pledge the COMP211 honor code.
+
 #include <stdio.h>
 #include <stdlib.h>
 
