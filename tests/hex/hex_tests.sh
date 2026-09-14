@@ -23,3 +23,5 @@ for in_file in "$INPUT_DIR"/*.in; do
         echo "$name: FAIL"
     fi
 done
+
+rm -rf "$ACTUAL_DIR"/*.actual

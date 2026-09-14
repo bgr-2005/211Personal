@@ -7,21 +7,31 @@
 int main(void) {
     int c;
     int char_count = 0;
+    
+    // Lookup table mapping 4-bit values (0-15) to their hex ASCII characters
+    const char hex_digits[] = "0123456789ABCDEF";
 
-    // Read every single character from stdin until EOF
     while ((c = getchar()) != EOF) {
-        // Print the character as 2 uppercase hex digits
-        printf("%02X", (unsigned char)c);
+        unsigned char byte = (unsigned char)c;
+
+        // High nibble: shift right by 4 bits and isolate with mask 0x0F
+        char high_char = hex_digits[(byte >> 4) & 0x0F];
+        
+        // Low nibble: isolate the lower 4 bits with mask 0x0F
+        char low_char = hex_digits[byte & 0x0F];
+
+        // Print the two hex characters using putchar
+        putchar(high_char);
+        putchar(low_char);
+
         char_count += 2;
 
-        // Line wrapping: Insert a newline after every 80 hex characters
         if (char_count >= 80) {
             putchar('\n');
             char_count = 0;
         }
     }
 
-    // Always print a final newline if the last line wasn't wrapped exactly on the 80th character
     if (char_count > 0) {
         putchar('\n');
     }
