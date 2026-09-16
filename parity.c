@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define BYTE 8
+
 uint8_t is_odd(char c);
 uint8_t parityEncoder(char c);
 
@@ -22,7 +24,7 @@ uint8_t is_odd(char c) {
 
     int ones_count = 0;
 
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < BYTE; i++) {
         int bit = (c >> i) & 1;
         ones_count += bit;
     }

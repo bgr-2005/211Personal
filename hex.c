@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define LINE_LENGTH 80 
+
+
 int main(void) {
     int c;
     int char_count = 0;
@@ -26,7 +29,7 @@ int main(void) {
 
         char_count += 2;
 
-        if (char_count >= 80) {
+        if (char_count >= LINE_LENGTH) {
             putchar('\n');
             char_count = 0;
         }
