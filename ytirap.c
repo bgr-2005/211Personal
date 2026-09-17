@@ -40,6 +40,7 @@ uint8_t ytirapDecoder(char c) {
 
     if (is_odd(c)) {
         // If the number of 1 bits in c is odd, return 1
+        printf("\n"); 
         fprintf(stderr, "\nCorruption detected!\n"); 
         return 1;
     } else {
