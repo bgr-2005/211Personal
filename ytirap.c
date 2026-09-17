@@ -18,10 +18,15 @@ int main(void) {
     int c; 
 
     while ((c = getchar()) != EOF) {
-        if (ytirapDecoder(c) == 1) {
+        if (c == '\n') {
+            continue;
+        }
+
+        uint8_t decodedByte = ytirapDecoder(c);
+        if (decodedByte == 1) {
             return EXIT_FAILURE;
         }
-        printf("%c", ytirapDecoder(c));
+        printf("%c", decodedByte);
     }
 
     return EXIT_SUCCESS;
@@ -33,9 +38,7 @@ uint8_t ytirapDecoder(char c) {
     // You can use the is_odd and parityEncoder functions from parity.c if needed
     uint8_t fixedByte = 0;
 
-    if (c == '\n')
-        return 0;
-    else if (is_odd(c)) {
+    if (is_odd(c)) {
         // If the number of 1 bits in c is odd, return 1
         fprintf(stderr, "\nCorruption detected!\n"); 
         return 1;
